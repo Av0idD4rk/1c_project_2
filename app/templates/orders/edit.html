@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Редактирование приказа{% endblock %}
+
+{% block content %}
+<h2>Редактирование приказа #{{ order.id }}</h2>
+<form action="/orders/{{ order.id }}/edit" method="post" class="mt-3">
+  <div class="mb-3">
+    <label for="exhibition_id" class="form-label">Выставка</label>
+    <select name="exhibition_id" id="exhibition_id" class="form-select" required>
+      {% for e in exhibitions %}
+      <option
+        value="{{ e.id }}"
+        {% if order.exhibition_id == e.id %}selected{% endif %}
+      >
+        {{ e.title }}
+      </option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="start_date" class="form-label">Дата начала</label>
+    <input type="date" name="start_date" id="start_date" class="form-control" value="{{ order.start_date }}" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="end_date" class="form-label">Дата окончания</label>
+    <input type="date" name="end_date" id="end_date" class="form-control" value="{{ order.end_date }}" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="venue" class="form-label">Место проведения</label>
+    <input type="text" name="venue" id="venue" class="form-control" value="{{ order.venue }}">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Выберите экспонаты</label>
+    <div class="row">
+      {% for ex in exhibits %}
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="selected_exhibits"
+            value="{{ ex.id }}"
+            id="ex_{{ ex.id }}"
+            {% if ex in order.exhibits %}checked{% endif %}
+          >
+          <label class="form-check-label" for="ex_{{ ex.id }}">
+            {{ ex.name }} ({{ ex.owner.name if ex.owner else "–"}})
+          </label>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-success">Сохранить</button>
+  <a href="/orders/{{ order.id }}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}

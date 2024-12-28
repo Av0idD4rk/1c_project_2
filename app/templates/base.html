@@ -1,0 +1,53 @@
+<!-- app/templates/base.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Приложение Выставки{% endblock %}</title>
+  <!-- Подключаем Bootstrap 5 (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Управление Выставками</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="Переключить навигацию">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="topNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Ссылки на разделы -->
+        <li class="nav-item">
+          <a class="nav-link" href="/owners">Владельцы</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/exhibits">Экспонаты</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/exhibitions">Выставки</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/orders">Приказы</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/arrival_acts">Акты поступления</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/transfer_acts">Акты передачи</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/return_acts">Акты возврата</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container my-4">
+  {% block content %}{% endblock %}
+</div>
+
+<!-- JS Bootstrap 5 для меню, модальных окон и т.д. -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

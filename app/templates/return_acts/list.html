@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Акты возврата{% endblock %}
+
+{% block content %}
+<h2>Список актов возврата</h2>
+<a class="btn btn-success mb-3" href="/return_acts/create">Создать акт возврата</a>
+
+<table class="table table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Приказ</th>
+      <th>Дата возврата</th>
+      <th class="text-end">Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for act in acts %}
+    <tr>
+      <td>{{ act.id }}</td>
+      <td>Приказ #{{ act.order_id }}</td>
+      <td>{{ act.returned_at }}</td>
+      <td class="text-end">
+        <a class="btn btn-sm btn-primary" href="/return_acts/{{ act.id }}">Открыть</a>
+        <a class="btn btn-sm btn-warning" href="/return_acts/{{ act.id }}/edit">Редактировать</a>
+        <form action="/return_acts/{{ act.id }}/delete" method="post" class="d-inline">
+          <button class="btn btn-sm btn-danger" type="submit">Удалить</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

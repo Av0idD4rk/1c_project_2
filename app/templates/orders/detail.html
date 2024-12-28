@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Информация о приказе{% endblock %}
+
+{% block content %}
+<h2>Приказ #{{ order.id }}</h2>
+<div class="mb-3">
+  <strong>Выставка:</strong> {{ order.exhibition.title if order.exhibition else "—" }}
+</div>
+<div class="mb-3">
+  <strong>Дата начала – дата окончания:</strong> {{ order.start_date }} – {{ order.end_date }}
+</div>
+<div class="mb-3">
+  <strong>Место проведения:</strong> {{ order.venue }}
+</div>
+
+<div class="mb-3">
+  <strong>Экспонаты, связанные с приказом:</strong>
+  <ul>
+    {% for ex in order.exhibits %}
+    <li>{{ ex.name }} ({{ ex.owner.name if ex.owner else "—" }})</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<!-- Добавляем кнопку "Скачать PDF" -->
+<a href="/orders/{{ order.id }}/pdf" class="btn btn-info" target="_blank">
+  Скачать PDF
+</a>
+
+<a class="btn btn-warning" href="/orders/{{ order.id }}/edit">Редактировать</a>
+<form action="/orders/{{ order.id }}/delete" method="post" class="d-inline">
+  <button class="btn btn-danger" type="submit">Удалить</button>
+</form>
+<a class="btn btn-secondary" href="/orders">Назад</a>
+{% endblock %}

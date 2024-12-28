@@ -1,0 +1,9 @@
+<!-- app/templates/error.html -->
+{% extends "base.html" %}
+{% block title %}Ошибка - {{ status_code }}{% endblock %}
+
+{% block content %}
+<h2>Ошибка: {{ status_code }}</h2>
+<p>{{ detail }}</p>
+<a href="/" class="btn btn-primary">Вернуться</a>
+{% endblock %}

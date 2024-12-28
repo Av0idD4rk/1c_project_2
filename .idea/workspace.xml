@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1b08dfc9-a1cf-4d49-9fa6-c3061ee6abb1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/1c_project_2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/database.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/arrival_act.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/association_tables.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/exhibit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/exhibition.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/order.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/owner.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/return_act.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/transfer_act.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routers/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routers/arrival_acts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routers/exhibitions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routers/exhibits.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routers/orders.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routers/owners.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routers/return_acts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routers/transfer_acts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/orders_service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/pdf_service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/arrival_acts/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/arrival_acts/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/arrival_acts/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/arrival_acts/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/error.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/exhibitions/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/exhibitions/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/exhibitions/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/exhibitions/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/exhibits/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/exhibits/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/exhibits/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/exhibits/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/orders/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/orders/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/orders/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/orders/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/owners/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/owners/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/owners/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/owners/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/pdf/arrival_act_pdf.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/pdf/order_pdf.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/pdf/return_act_pdf.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/pdf/transfer_act_pdf.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/return_acts/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/return_acts/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/return_acts/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/return_acts/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/transfer_acts/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/transfer_acts/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/transfer_acts/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/transfer_acts/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2qodZCa1KSvHIyDY1HObpYZC2ri" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/user/PycharmProjects/1c_project_2/app/templates/return_acts",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\PycharmProjects\1c_project_2\app\templates\return_acts" />
+      <recent name="C:\Users\user\PycharmProjects\1c_project_2\app\templates\transfer_acts" />
+      <recent name="C:\Users\user\PycharmProjects\1c_project_2\app\templates\exhibitions" />
+      <recent name="C:\Users\user\PycharmProjects\1c_project_2\app\models" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\PycharmProjects\1c_project_2\app\templates\arrival_acts" />
+      <recent name="C:\Users\user\PycharmProjects\1c_project_2\app" />
+      <recent name="C:\Users\user\PycharmProjects\1c_project_2\app\routers" />
+      <recent name="C:\Users\user\PycharmProjects\1c_project_2\app\templates\owners" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="1c_project_2" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\user\PycharmProjects\1c_project_2\app\main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.22855.92" />
+        <option value="bundled-python-sdk-b068d85d1acf-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.22855.92" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1b08dfc9-a1cf-4d49-9fa6-c3061ee6abb1" name="Changes" comment="" />
+      <created>1735332914992</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1735332914992</updated>
+      <workItem from="1735332920926" duration="970000" />
+      <workItem from="1735373721050" duration="4211000" />
+      <workItem from="1735378349995" duration="6182000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/1c_project_2$main.coverage" NAME="main Coverage Results" MODIFIED="1735375431760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

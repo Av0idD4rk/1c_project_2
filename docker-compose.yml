@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:17
+    container_name: my_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: main
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    container_name: my_exhibition_app
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/main
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+
+volumes:
+  db_data:

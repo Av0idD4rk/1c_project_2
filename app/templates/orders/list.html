@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Приказы{% endblock %}
+
+{% block content %}
+<h2>Список приказов</h2>
+<a class="btn btn-success mb-3" href="/orders/create">Создать новый приказ</a>
+
+<table class="table table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Выставка</th>
+      <th>Даты проведения</th>
+      <th class="text-end">Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for o in orders %}
+    <tr>
+      <td>{{ o.id }}</td>
+      <td>{{ o.exhibition.title if o.exhibition else "–" }}</td>
+      <td>{{ o.start_date }} – {{ o.end_date }}</td>
+      <td class="text-end">
+        <a class="btn btn-sm btn-primary" href="/orders/{{ o.id }}">Открыть</a>
+        <a class="btn btn-sm btn-warning" href="/orders/{{ o.id }}/edit">Редактировать</a>
+        <form action="/orders/{{ o.id }}/delete" method="post" class="d-inline">
+          <button class="btn btn-sm btn-danger" type="submit">Удалить</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

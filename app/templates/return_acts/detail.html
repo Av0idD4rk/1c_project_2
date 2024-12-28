@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Акт возврата{% endblock %}
+
+{% block content %}
+<h2>Акт возврата #{{ act.id }}</h2>
+<p><strong>Приказ:</strong> #{{ act.order_id }}</p>
+<p><strong>Дата возврата:</strong> {{ act.returned_at }}</p>
+<p><strong>Экспонаты в этом акте:</strong></p>
+<ul>
+  {% for ex in act.exhibits %}
+  <li>{{ ex.name }} ({{ ex.owner.name if ex.owner else "—"}})</li>
+  {% endfor %}
+</ul>
+
+<!-- Кнопка PDF -->
+<a href="/return_acts/{{ act.id }}/pdf" class="btn btn-info" target="_blank">
+  Скачать PDF
+</a>
+
+<a class="btn btn-warning" href="/return_acts/{{ act.id }}/edit">Редактировать</a>
+<form action="/return_acts/{{ act.id }}/delete" method="post" class="d-inline">
+  <button class="btn btn-danger" type="submit">Удалить</button>
+</form>
+<a class="btn btn-secondary" href="/return_acts">Назад</a>
+{% endblock %}

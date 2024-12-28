@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {
+      font-family: DejaVu Sans, sans-serif;
+      margin: 20px;
+      font-size: 14px;
+    }
+    h1, h2, h3 { text-align: center; }
+    .signatures { margin-top: 80px; }
+    .sign-line { margin-top: 40px; margin-bottom: 20px; }
+    .label { display: inline-block; width: 200px; }
+    .line { display: inline-block; width: 300px; border-bottom: 1px solid #000; margin-left: 20px; }
+  </style>
+</head>
+<body>
+  <h2>Акт поступления № {{ act.id }}</h2>
+  <p><strong>Приказ:</strong> #{{ act.order_id }}</p>
+  {% if act.order and act.order.exhibition %}
+    <p><strong>Выставка:</strong> {{ act.order.exhibition.title }}</p>
+  {% endif %}
+  <p><strong>Дата поступления:</strong> {{ act.arrived_at }}</p>
+
+  <hr>
+
+  <h3>Экспонаты в этом акте</h3>
+  {% if exhibits and exhibits|length > 0 %}
+    <ul>
+      {% for ex in exhibits %}
+      <li>{{ ex.name }} (Владелец: {{ ex.owner.name if ex.owner else "—"}})</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Нет экспонатов</p>
+  {% endif %}
+
+  <div class="signatures">
+    <h3>Подписи</h3>
+    <div class="sign-line">
+      <span class="label">Принял (ФИО):</span>
+      <span class="line"></span>
+    </div>
+    <div class="sign-line">
+      <span class="label">Ответственный за хранение:</span>
+      <span class="line"></span>
+    </div>
+    <div class="sign-line">
+      <span class="label">Дата:</span>
+      <span class="line"></span>
+    </div>
+  </div>
+</body>
+</html>

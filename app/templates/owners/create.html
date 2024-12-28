@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Создание владельца{% endblock %}
+{% block content %}
+<h2>Создание нового владельца</h2>
+<form action="/owners/create" method="post" class="mt-3">
+  <div class="mb-3">
+    <label for="name" class="form-label">Название / Имя владельца</label>
+    <input type="text" name="name" id="name" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-success">Сохранить</button>
+  <a href="/owners" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}

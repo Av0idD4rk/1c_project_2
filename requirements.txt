@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+sqlalchemy
+alembic
+psycopg2
+pydantic
+jinja2
+python-multipart
+weasyprint

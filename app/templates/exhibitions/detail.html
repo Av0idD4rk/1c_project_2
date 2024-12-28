@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Выставка{% endblock %}
+
+{% block content %}
+<h2>Выставка #{{ exhibition.id }}</h2>
+
+<div class="mb-3">
+  <strong>Название:</strong> {{ exhibition.title }}
+</div>
+<div class="mb-3">
+  <strong>Описание:</strong> {{ exhibition.description }}
+</div>
+
+<hr>
+
+{% if order %}
+  <h4>Приказ #{{ order.id }}</h4>
+  <p><strong>Даты проведения:</strong> {{ order.start_date }} – {{ order.end_date }}</p>
+  <p><strong>Место проведения:</strong> {{ order.venue }}</p>
+
+  <h5 class="mt-4">Экспонаты в приказе</h5>
+  {% if exhibits|length == 0 %}
+    <p>Нет экспонатов.</p>
+  {% else %}
+    <ul>
+      {% for ex in exhibits %}
+      <li>{{ ex.name }} (владелец: {{ ex.owner.name if ex.owner else "—" }})</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <hr>
+
+  <h5>Акты поступления</h5>
+  {% if arrival_acts|length == 0 %}
+    <p>Нет актов поступления.</p>
+  {% else %}
+    <ul>
+      {% for a in arrival_acts %}
+      <li>
+        Акт #{{ a.id }} от {{ a.arrived_at }}
+        (<a href="/arrival_acts/{{ a.id }}">Подробнее</a>)
+      </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <h5>Акты передачи</h5>
+  {% if transfer_acts|length == 0 %}
+    <p>Нет актов передачи.</p>
+  {% else %}
+    <ul>
+      {% for t in transfer_acts %}
+      <li>
+        Акт #{{ t.id }} от {{ t.transferred_at }}
+        (<a href="/transfer_acts/{{ t.id }}">Подробнее</a>)
+      </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <h5>Акты возврата</h5>
+  {% if return_acts|length == 0 %}
+    <p>Нет актов возврата.</p>
+  {% else %}
+    <ul>
+      {% for r in return_acts %}
+      <li>
+        Акт #{{ r.id }} от {{ r.returned_at }}
+        (<a href="/return_acts/{{ r.id }}">Подробнее</a>)
+      </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+{% else %}
+  <h4>Нет приказа, связанного с этой выставкой.</h4>
+{% endif %}
+
+<a class="btn btn-secondary mt-4" href="/exhibitions">Назад</a>
+{% endblock %}

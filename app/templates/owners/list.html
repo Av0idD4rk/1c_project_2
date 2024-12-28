@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Владельцы{% endblock %}
+{% block content %}
+<h2>Список владельцев</h2>
+<a class="btn btn-success mb-3" href="/owners/create">Создать нового владельца</a>
+
+<table class="table table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Имя / Название</th>
+      <th class="text-end">Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for owner in owners %}
+    <tr>
+      <td>{{ owner.id }}</td>
+      <td>{{ owner.name }}</td>
+      <td class="text-end">
+        <a class="btn btn-sm btn-primary" href="/owners/{{ owner.id }}">Открыть</a>
+        <a class="btn btn-sm btn-warning" href="/owners/{{ owner.id }}/edit">Редактировать</a>
+        <form action="/owners/{{ owner.id }}/delete" method="post" class="d-inline">
+          <button class="btn btn-sm btn-danger" type="submit">Удалить</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

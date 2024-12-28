@@ -1,0 +1,96 @@
+<!-- app/templates/index.html -->
+{% extends "base.html" %}
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Добро пожаловать!</h1>
+<p>Это главная страница системы управления выставками. Выберите раздел для работы:</p>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Владельцы</h5>
+        <p class="card-text">Создавайте и редактируйте список владельцев экспонатов.</p>
+        <a href="/owners" class="btn btn-primary">Перейти к владельцам</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Экспонаты</h5>
+        <p class="card-text">Добавляйте и изменяйте информацию об экспонатах.</p>
+        <a href="/exhibits" class="btn btn-primary">Перейти к экспонатам</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Приказы</h5>
+        <p class="card-text">Управляйте приказами о проведении выставки.</p>
+        <a href="/orders" class="btn btn-primary">Открыть приказы</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ниже блок со списком выставок и прогресс-барами стадий -->
+<hr class="my-4">
+
+<h2>Текущие выставки и их стадии</h2>
+{% if exhibitions_with_stage|length == 0 %}
+  <p>Пока нет выставок</p>
+{% else %}
+  <div class="list-group">
+    {% for item in exhibitions_with_stage %}
+    <div class="list-group-item mb-3">
+      <h5 class="mb-1">Выставка: {{ item.exhibition.title }} (ID: {{ item.exhibition.id }})</h5>
+      <p class="mb-1"><strong>Описание:</strong> {{ item.exhibition.description }}</p>
+      <!-- Отображаем "стадию" в виде пошагового прогресса -->
+      {% set stage = item.stage %}
+
+      <!-- Вариант A: список шагов -->
+      <ul class="list-group mb-2">
+        <li class="list-group-item
+          {% if stage in ['Запланировано','Прибытие экспонатов','Выставка идёт','Ожидаем возврата','Выставка закончилась'] %} list-group-item-success {% else %} list-group-item-light {% endif %}">
+          Шаг 1: Планирование
+        </li>
+        <li class="list-group-item
+          {% if stage in ['Прибытие экспонатов','Выставка идёт','Ожидаем возврата','Выставка закончилась'] %} list-group-item-success {% else %} list-group-item-light {% endif %}">
+          Шаг 2: Прибытие экспонатов
+        </li>
+        <li class="list-group-item
+          {% if stage in ['Выставка идёт','Ожидаем возврата','Выставка закончилась'] %} list-group-item-success {% else %} list-group-item-light {% endif %}">
+          Шаг 3: Передача экспонатов на выставку
+        </li>
+        <li class="list-group-item
+          {% if stage in ['Ожидаем возврата','Выставка закончилась'] %} list-group-item-success {% else %} list-group-item-light {% endif %}">
+          Шаг 4: Ожидание возврата
+        </li>
+        <li class="list-group-item
+          {% if stage == 'Выставка закончилась' %} list-group-item-success {% else %} list-group-item-light {% endif %}">
+          Шаг 5: Завершено
+        </li>
+      </ul>
+
+      <!-- Вариант B: короткий текст -->
+      <p class="mb-1">Текущая стадия: <strong>{{ stage }}</strong></p>
+
+      <!-- Ссылка на детали выставки (если есть страница /exhibitions/{id}) -->
+      <a class="btn btn-info btn-sm" href="/exhibitions/{{ item.exhibition.id }}">
+        Перейти к выставке
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+{% endif %}
+{% endblock %}
+
+Запланировано
+Прибытие экспонатов
+Ожидаем возврата
+Выставка закончилась
