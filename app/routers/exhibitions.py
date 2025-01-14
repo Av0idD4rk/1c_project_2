@@ -43,34 +43,24 @@ def exhibitions_create(
 
 @router.get("/exhibitions/{exhibition_id}")
 def exhibitions_detail(exhibition_id: int, request: Request, db: Session = Depends(get_db)):
-    # 1) Сначала найдём саму выставку
     exhibition = db.query(Exhibition).get(exhibition_id)
     if not exhibition:
-        # Если нет, то можно редиректить на список или вернуть 404
         return RedirectResponse(url="/exhibitions", status_code=303)
 
-    # 2) Предположим, что у Exhibition есть связь 1:1 с Order
-    #    (т.е. в Order.exhibition_id = exhibition.id)
     order = db.query(Order).filter(Order.exhibition_id == exhibition.id).first()
     print(order)
-    # 3) Если приказ найден, соберём все связанные экспонаты (M:N), а также акты
     exhibits = []
     arrival_acts = []
     transfer_acts = []
     return_acts = []
 
     if order:
-        # Экспонаты (M:N через order_exhibit_association)
         exhibits = order.exhibits  # SQLAlchemy relationship
 
-        # Акты поступления
         arrival_acts = db.query(ArrivalAct).filter(ArrivalAct.order_id == order.id).all()
-        # Акты передачи
         transfer_acts = db.query(TransferAct).filter(TransferAct.order_id == order.id).all()
-        # Акты возврата
         return_acts = db.query(ReturnAct).filter(ReturnAct.order_id == order.id).all()
 
-    # 4) Передаём всё в шаблон
     return templates.TemplateResponse("exhibitions/detail.html", {
         "request": request,
         "exhibition": exhibition,

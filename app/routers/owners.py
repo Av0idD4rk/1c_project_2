@@ -1,4 +1,3 @@
-# app/routers/owners.py
 
 from fastapi import APIRouter, Request, Form, Depends
 from fastapi.responses import RedirectResponse

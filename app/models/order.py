@@ -1,4 +1,3 @@
-# app/models/order.py
 
 from sqlalchemy import Column, Integer, DateTime, String, ForeignKey, Date
 from sqlalchemy.orm import relationship

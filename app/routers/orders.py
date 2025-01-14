@@ -52,7 +52,6 @@ def orders_create(
         selected_exhibits: list[int] = Form([]),
         db: Session = Depends(get_db)
 ):
-    # Преобразуем start_date/end_date из строки
     sd = date.fromisoformat(start_date)
     ed = date.fromisoformat(end_date)
 
@@ -65,9 +64,7 @@ def orders_create(
     db.add(order)
     db.commit()
 
-    # Теперь добавим экспонаты, выбранные по checkbox
     if selected_exhibits:
-        # Нужно заново подгрузить order (или выполнить refresh)
         db.refresh(order)
         for ex_id in selected_exhibits:
             exhibit = db.query(Exhibit).get(ex_id)
@@ -84,7 +81,7 @@ def orders_detail(order_id: int, request: Request, db: Session = Depends(get_db)
     if not order:
         return RedirectResponse(url="/orders", status_code=303)
 
-    stage = calculate_stage(order, db)  # вычисляем стадию
+    stage = calculate_stage(order, db)
     return templates.TemplateResponse(
         "orders/detail.html",
         {
@@ -134,12 +131,9 @@ def orders_edit(
     order.end_date = ed
     order.venue = venue
 
-    # Обновим M:N связь
-    # Сначала очистим
     order.exhibits.clear()
     db.commit()
 
-    # Потом добавим заново
     for ex_id in selected_exhibits:
         exhibit = db.query(Exhibit).get(ex_id)
         if exhibit:

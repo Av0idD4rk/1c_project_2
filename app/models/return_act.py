@@ -1,4 +1,3 @@
-# app/models/return_act.py
 
 from sqlalchemy import Column, Integer, DateTime, ForeignKey
 from sqlalchemy.orm import relationship

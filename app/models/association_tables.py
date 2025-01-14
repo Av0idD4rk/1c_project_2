@@ -1,4 +1,3 @@
-# app/models/association_tables.py
 
 from sqlalchemy import Table, Column, Integer, ForeignKey
 from app.database import Base

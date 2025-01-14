@@ -1,4 +1,3 @@
-# app/main.py
 
 from fastapi import FastAPI, Request, HTTPException, Depends
 from fastapi.templating import Jinja2Templates
@@ -13,13 +12,10 @@ from app.services.orders_service import calculate_stage
 
 app = FastAPI(title="Exhibition Management")
 
-# Указываем папку с шаблонами (если не сделано ранее)
 templates = Jinja2Templates(directory="app/templates")
 
-# Если нужен доступ к статике (CSS, JS), монтируем папку:
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
-# Подключаем роутеры (как делали раньше)
 app.include_router(owners.router)
 app.include_router(exhibits.router)
 app.include_router(exhibitions.router)
@@ -40,7 +36,6 @@ def get_db():
 def read_index(request: Request, db: Session = Depends(get_db)):
     exhibitions = db.query(Exhibition).all()
 
-    # Создаём список «(выставка, стадия)»
     exhibitions_with_stage = []
     for ex in exhibitions:
         try:
@@ -58,12 +53,8 @@ def read_index(request: Request, db: Session = Depends(get_db)):
             "exhibitions_with_stage": exhibitions_with_stage
         }
     )
-# >>> Настраиваем обработчик <<<
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request: Request, exc: HTTPException):
-    """
-    Ловим любые HTTPException и вместо JSON отдаём HTML-страницу error.html
-    """
     return templates.TemplateResponse(
         "error.html",
         {

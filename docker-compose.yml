@@ -1,7 +1,7 @@
 services:
   db:
     image: postgres:17
-    container_name: my_postgres
+    container_name: postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -13,7 +13,7 @@ services:
 
   web:
     build: .
-    container_name: my_exhibition_app
+    container_name: exhibition_app
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/main
     depends_on:

@@ -54,15 +54,12 @@ def transfer_acts_create(
         )
 
 
-    # 2) Логика: все выбранные экспонаты должны быть «прибывшими» (т.е. упоминаться в ArrivalAct по этому order_id)
-    # Способ: найдём все ArrivalActs для этого order_id, соберём все exhibits
     arrival_acts_for_order = db.query(ArrivalAct).filter(ArrivalAct.order_id == order_id).all()
     arrived_exhibit_ids = set()
     for arrival_act in arrival_acts_for_order:
         for ex in arrival_act.exhibits:
             arrived_exhibit_ids.add(ex.id)
 
-    # 3) Проверим, что каждый ex_id из selected_exhibits присутствует в arrived_exhibit_ids
     for ex_id in selected_exhibits:
         if ex_id not in arrived_exhibit_ids:
             raise HTTPException(
@@ -70,13 +67,11 @@ def transfer_acts_create(
                 detail=f"Экспонат ID={ex_id} ещё ене прибыл. Невозможно переместить."
             )
 
-    # 4) Если проверка пройдена, создаём TransferAct
     act = TransferAct(order_id=order_id)
     db.add(act)
     db.commit()
     db.refresh(act)
 
-    # 5) Добавляем экспонаты
     for ex_id in selected_exhibits:
         exhibit = db.query(Exhibit).get(ex_id)
         if exhibit:

@@ -1,11 +1,9 @@
-# app/database.py
 
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-# Для Docker-сборки, ищем DATABASE_URL в переменных окружения
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///../test.db")
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@db:5432/main")
 
 engine = create_engine(DATABASE_URL, echo=False, future=True)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, future=True)

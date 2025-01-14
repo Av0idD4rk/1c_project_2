@@ -45,11 +45,9 @@ def return_acts_create(
     if not order:
         raise HTTPException(status_code=400, detail="Приказа не существует")
 
-    # Проверим, закончилась ли выставка:
     if order.end_date > date.today():
         raise HTTPException(status_code=400, detail="Выставка ещё не закончилась.")
 
-    # Проверим, что все выбранные экспонаты «переданы»
     transfer_acts_for_order = db.query(TransferAct).filter(TransferAct.order_id == order_id).all()
     transferred_exhibit_ids = set()
     for t_act in transfer_acts_for_order:
@@ -63,7 +61,6 @@ def return_acts_create(
                 detail=f"Экспонат ID={ex_id} не был передан (невозможно вернуть)."
             )
 
-    # Если всё ок, создаём ReturnAct
     act = ReturnAct(order_id=order_id)
     db.add(act)
     db.commit()
